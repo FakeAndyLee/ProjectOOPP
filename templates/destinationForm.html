@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <div style="font-weight: bold;">
+                    <legend class="border-bottom mb-4">Journey Details</legend>
+                </div>
+
+                <div class="form-group">
+                    <div style="font-size:20px;">
+                        {{ form.journeyName.label(class="form-control-label") }}
+                    </div>
+                        {% if form.journeyName.errors %}
+                            {{ form.journeyName(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.journeyName.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.journeyName(class="form-control form-control-lg") }}
+                        {% endif %}
+                    <small class="form-text text-muted">Eg. Going Home</small>
+                </div>
+
+                <div class="form-group">
+                    {{ form .busNumber.label(class="form-control-label") }}
+                    <div style="width: 25%;">
+                        {% if form.busNumber.errors %}
+                            {{ form.busNumber(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.busNumber.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.busNumber(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        {{ form.journeyFrom.label(class="form-control-label") }}
+
+                        {% if form.journeyFrom.errors %}
+                            {{ form.journeyFrom(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.journeyFrom.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.journeyFrom(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form.journeyTo.label(class="form-control-label") }}
+                        {% if form.journeyTo.errors %}
+                            {{ form.journeyTo(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.journeyTo.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.journeyTo(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form.alertMe.label(class="form-control-label") }}
+                    <div style="width: 25%;">
+                        {% if form.alertMe.errors %}
+                            {{ form.alertMe(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.alertMe.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.alertMe(class="form-control form-control-lg") }}
+                        {% endif %}
+
+                    </div>
+                </div>
+            </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+{% endblock content %}

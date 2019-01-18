@@ -1,0 +1,60 @@
+.containerbus{
+    height: 100px;
+    width: 100%;
+    border-color: black;
+    border-style: groove;
+    position: relative;
+    top: 100px;
+    border-bottom: none;
+    border-radius: 5px;
+}
+#contentb{
+    height: 300px;
+    width: 100%;
+    border-color: black;
+    position: relative;
+    border-style:groove ;
+    border-top: none;
+    border-radius:5px
+}
+#p1{
+    font-family: Quicksand;
+    font-weight: bold;
+    font-size: 40px;
+    position: relative;
+    left: 50px;
+
+}
+
+#p2{
+    font-family: Quicksand;
+    font-size: 30px;
+    text-align: 25px;
+    position: relative;
+    left:50px;
+}
+
+#arrow{
+    font-size: 60px;
+    float: right;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    bottom: 15px;
+}
+
+#submit{
+    padding: 16px 32px;
+    margin: 4px 2px;
+    background-color: white;
+    color: black;
+    font-family: Quicksand;
+}
+#map{
+    float: right;
+    height: 250px;
+    width:500px;
+    bottom: 200px;
+    position: relative;
+    left:30%;
+}
