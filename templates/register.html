@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Join Today{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="username">Username*</label>
+    <input name="username" class="useless" id="username" placeholder="Username" required>
+    <label for="password">Password*</label>
+    <input type="password" name="password" class="useless" id="password" placeholder="Password" required>
+    <label for="password">Confirm Password*</label>
+    <input type="password" name="password2" class="useless" id="password" placeholder="Confirm Password" required>
+    <label for="email">Email*</label>
+    <input type ="email" name="email" class="useless" id="email" placeholder="Email" required>
+    <div>
+    <input type="submit" class="myButton" value="Register"> &nbsp <a href="/logout"><input type="button" class="myButton" value=" Back to home"></a>
+    </div>
+  </form>
+{% endblock %}

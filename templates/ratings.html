@@ -1,0 +1,55 @@
+{% extends "layoutWOSB.html" %}
+
+{% block content %}
+    <div class="containerStar">
+    <h1 id="rateHead">Star Rating System</h1>
+
+
+        <form method="POST" class="form form-horizontal">
+            <div class="stars">
+                {{ starR.stars(class = "star") }}
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                {{ starR.submits(class="btn btn-primary starBtn") }}
+            </div>
+            <p>&nbsp</p>
+        </form>
+    </div>
+
+
+<!--   <script>
+
+    //initial setup
+        document.addEventListener('DOMContentLoaded', function(){
+            let stars = document.querySelectorAll('.star');
+            stars.forEach(function(star){
+                star.addEventListener('click', setRating);
+            });
+
+            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+            let target = stars[rating - 1];
+            target.dispatchEvent(new MouseEvent('click'));
+        });
+        function setRating(ev){
+            let span = ev.currentTarget;
+            let stars = document.querySelectorAll('.star');
+            let match = false;
+            let num = 0;
+            stars.forEach(function(star, index){
+                if(match){
+                    star.classList.remove('rated');
+                }else{
+                    star.classList.add('rated');
+                }
+                //are we currently looking at the span that was clicked
+                if(star === span){
+                    match = true;
+                    num = index + 1;
+                }
+            });
+            document.querySelector('.stars').setAttribute('data-rating', num);
+        }
+
+    </script> -->
+
+{% endblock %}

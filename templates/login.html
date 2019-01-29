@@ -1,4 +1,17 @@
-{% extends "layoutWOsidebar.html" %}
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
 {% block content %}
-    <h1 style="color:white;padding-left: 40%;">Login Page</h1>
+  <form method="post" action="/login">
+    <label for="username">Username*</label>
+    <input name="username" class="useless" id="username" placeholder="Username" required>
+    <label for="password">Password*</label>
+    <input type="password" class="useless" name="password" id="password" placeholder="Password" required>
+    <div>
+        <input type="submit" class="myButton" value="Log In"> &nbsp; <a href="/logout"><input type="button" class="myButton" value=" Back to home"></a> <a href='/forgetpassword'><input type="button"  class ="hello" value="Forget Password"></a>
+    </div>
+  </form>
 {% endblock %}

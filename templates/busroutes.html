@@ -1,0 +1,74 @@
+{% extends "layoutWOSBHome.html" %}
+
+{% block content %}
+    <h1 id="routeHeader">Saved Routes</h1>
+	<div class="accordion" id="accordionExample">
+		<div id="route1" class="containerbus">
+		  <div class="card">
+			<div class="card-header" id="headingOne">
+				<button class="btn btn-link" type="button" id="arrow" data-toggle="collapse" data-target="#contentb" aria-expanded="false"  aria-controls="contentb">
+				  &#8659;
+				</button>
+				<p id="routeName">School</p>
+			</div>
+
+			<div id="contentb" class="collapse content show" data-parent="#accordionExample" aria-labelledby="headingOne" aria-expanded="true">
+			  <div class="card-body">
+				<p id="route">Ang Mio Kio &#8674; Yishun</p>
+				<div class="col-md-9">
+                    <form method="POST">
+                        <div class="form">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    {{ bus.comment1(class="form-control") }}
+                                    <small class="form-text text-muted">Add notes here!</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    {{ bus.submit3(class="btn btn-primary") }}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d63818.0574463594!2d103.80778102868189!3d1.3992523956842673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x31da16c40ac82661%3A0x500f7acaedaa550!2sAng+Mo+Kio!3m2!1d1.3691149!2d103.8454342!4m5!1s0x31da146f8c7ca673%3A0xb4af6f11d53cc3bf!2sYishun!3m2!1d1.4294295!2d103.83502829999999!5e0!3m2!1sen!2ssg!4v1544514242264" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		 </div>
+		<div id="route2" class="containerbus">
+		  <div class="card">
+			<div class="card-header" id="headingTwo">
+				<button class="btn btn-link collapsed" type="button"  id="arrow" data-toggle="collapse" data-target="#contentc" aria-expanded="false" aria-controls="contentc">
+				  &#8659;
+				</button>
+				<p id="routeName">Work</p>
+			</div>
+			<div id="contentc" class="collapse content" aria-labelledby="headingTwo" data-parent="#accordionExample">
+			  <div class="card-body">
+				 <p id="route">Ang Mio Kio &#8674; Suntec</p>
+                 <div class="col-md-9">
+                     <form method="POST">
+                        <div class="form">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    {{ bus.comment2(class="form-control") }}
+                                    <small class="form-text text-muted">Add notes here!</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    {{ bus.submit4(class="btn btn-primary") }}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d63819.872955982166!2d103.79929288752423!3d1.3308513608657595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x31da16c40ac82661%3A0x500f7acaedaa550!2sAng+Mo+Kio!3m2!1d1.3691149!2d103.8454342!4m5!1s0x31da19aefcff45db%3A0x71f09dcf46064f44!2sSuntec+City%2C+3+Temasek+Blvd%2C+Singapore+038983!3m2!1d1.2941129999999998!2d103.8578404!5e0!3m2!1sen!2ssg!4v1548222593494" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+               </div>
+			</div>
+		  </div>
+		</div>
+        </div>
+	</div>
+{% endblock content  %}

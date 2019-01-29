@@ -1,1 +1,13 @@
-{% extends "layoutWOsidebar.html" %}
+{% extends "layoutWOSB.html" %}
+
+{% block content %}
+
+<h1 style="color:lawngreen; text-align:center; font-weight:bold;">Thank you {{ dest.name.data }} for submitting your feedback!</h1>
+<div style="border: 7px solid white; border-radius:25px; padding:30px;">
+    <h2 style="color: white;"> Name : {{dest.name.data}}</h2>
+    <p style="color: white;"> Feedback: {{dest.comment.data}}</p>
+</div>
+
+<a href="{{ url_for('contactus') }}" class="btn btn-danger" style="float:right;">back</a>
+
+{% endblock %}

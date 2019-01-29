@@ -1,0 +1,24 @@
+.red { background-color: red; }
+#table {
+    color:white;
+}
+#table td {
+    padding-left: 50px;
+    margin-bottom: 200px;
+    padding-top:5px;
+}
+
+#containDiv{
+    color:aqua;
+    padding-bottom:150px;
+    padding-left:10px;
+    font-weight: bold;
+
+}
+#btn {
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.value{
+
+}

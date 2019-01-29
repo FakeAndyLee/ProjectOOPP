@@ -1,0 +1,80 @@
+{% extends "layoutTestSite.html" %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div style="color:white;">
+    <h6>You are currently on Bus {{dest.busNumber.data}} travelling from <span style="background-color: red;">&nbsp {{dest.busstopCode.data}} &nbsp</span>&nbsp<strong>To</strong>&nbsp<span style="background-color: red;">&nbsp {{dest.destination.data}} .&nbsp</span>
+        You will be alerted <span style="background-color: red;"> &nbsp{{dest.alertMe.data}}&nbsp</span> stops before arrival.</h6>
+</div>
+<body>
+<script>
+    $(function(){
+        alert("'Click I'm on board to begin!");
+        var table = document.getElementById("table");
+        var rows = table.getElementsByTagName("tr");
+
+        var index = 0;
+
+        //  My func
+        var func =function(){
+            for (var i = 0; i < rows.length; i++) {
+                var c = rows[i].className;
+                if(i==index%17){
+                    rows[i].className="red";
+                } else {
+                    rows[i].className="";
+                }
+            }
+            index++;
+        }
+
+        $('#btn').click(function(){
+            //alert('11');
+            //func();
+            setInterval(func, 2000);
+            //alert('22');
+        });
+    });
+</script>
+
+<table align="center">
+    <tr>
+        <td>
+            <img style="width: 800px;margin-top: -190px;" src="{{ img }}">
+        </td>
+
+        <td>
+            <div id="containDiv" style="float:right; white-space:nowrap;">
+                <h1 style="padding-left: 35px;color:greenyellow;"> Bus Stops </h1>
+                <table id="table">
+                    <tr><u>Start__________________________________</u></tr>
+                    {% for key, i in value.items() %}
+                    <tr>
+                        <td class="value"> {{ i }} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <h6 style="font-weight:bold; border-top: 2px solid aqua;">End</u></h6>
+                <button id="btn" class="btn btn-success" style="margin-left: 15px;margin-top:10px;">I'm on board!</button>
+                <a href="{{ url_for('transit') }}" class="btn btn-danger" style="margin-top: 10px;">I have arrived!</a>
+            </div>
+
+        </td>
+
+    </tr>
+
+</table>
+<div id="forMap" >
+</div>
+
+
+
+
+
+
+
+</body>
+{% endblock %}

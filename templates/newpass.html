@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Thank you{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<p> We have sent an email to you, kindly follow the instructions on the email to set your new password. Thank you!</p>
+<a href="/login"><input type="submit" class="myButton" value="Log In"></a>
+{% endblock %}

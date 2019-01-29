@@ -1,0 +1,68 @@
+{% extends "layoutWOSB.html" %}
+
+{% block content %}
+<body>
+<script src="https://ajx.googleapis.com/ajx/libsjquery/3.3.1/jquery.min.js"></script>
+
+
+<h1 style="color:lawngreen;">SMART MOBILITY QUIZ</h1>
+<p style="color:white;">how smart are you ?</p>
+
+<form id="quiz" name="quiz" style="color:white">
+    <p> {{  qns1  }} </p>
+    <input type="radio" id="op" name="q1" value="A"> A) 80%<br>
+    <input type="radio" id="op" name="q1" value="B"> B) 20%<br>
+    <input type="radio" id="op" name="q1" value="C"> C) 60%<br>
+    <br>
+    <p>{{  qns2  }}</p>
+    <input type="radio" id="op" name="q2" value="A"> A) Bus<br>
+    <input type="radio" id="op" name="q2" value="B"> B) MRT<br>
+    <input type="radio" id="op" name="q2" value="C"> C) All of the above<br>
+    <br>
+    <p>{{  qns3  }}</p>
+    <input type="radio" id="op" name="q3" value="A"> A) $9370<br>
+    <input type="radio" id="op" name="q3" value="B"> B) $4690<br>
+    <input type="radio" id="op" name="q3" value="C"> C) $3490<br>
+    <br>
+
+    <input type="button" id="button" value="submit" onclick="check();">
+
+    <p id="displayScore"></p>
+
+
+</form>
+
+
+
+<script type="text/javascript">
+
+    function check() {
+        var Question1 = document.quiz.q1.value;
+        var  Question2 = document.quiz.q2.value;
+        var  Question3 = document.quiz.q3.value;
+
+        var questionCorrect = 0;
+
+        if ( Question1 == "C" ){
+            questionCorrect++;
+        }
+
+        if (Question2 == "C"){
+            questionCorrect++;
+        }
+
+        if (Question3 == "A"){
+            questionCorrect++;
+        }
+
+        document.getElementById("displayScore").innerHTML = "congratulations! you have " + questionCorrect +" questions correct!";
+
+    }
+
+</script>
+
+</body>
+
+
+
+{% endblock content %}

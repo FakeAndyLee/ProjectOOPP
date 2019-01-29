@@ -1,0 +1,81 @@
+{% extends "layoutWOSBHome.html" %}
+{% block content %}
+<!--
+enter name of the file (txtbox)
+title
+description
+load the form
+(another page) a page to list down all the images
+-->
+<form method="POST" action="">
+    <fieldset>
+        <div style ="color:white;border:solid 5px white;border-radius:25px;">
+            <legend style="margin-left:150px;font-size:35px;">Admin Inputs</legend>
+
+            <div style = "font-size:15px;font-weight:bold;margin-left:150px;margin-right:150px;">
+                {{ adminform.middle.label (class="form-control-label") }}<br>
+                {{ adminform.middle(class="form-control form-control-lg") }}
+                <br>
+                {#                <form action="{{ url_for('delete', id=blogs['id']) }}" method="post">#}
+
+                <input name='submit' class="danger" type="submit" value="Delete All" style="float:right;color:white;border:0px;font-weight:bold;background-color:red;" onclick="return confirm('Are you sure?');">
+                {#                 </form>#}
+
+                {#                {{ nohave }}#}
+                <br>
+                {#                #\button#}
+                {{ adminform.submit(class="btn btn-primary", style="background-color:lawngreen;") }}
+
+                {#                {% for i in accessblog %}#}
+                {#                    <div style ="border:solid 1px red;">#}
+                {#                        {{ i['description'] }}#}
+                {#                    </div>#}
+                {#                {% endfor %}#}
+            </div>
+
+
+
+<div>
+    <h1 style="color:white;margin-left:150px;">
+        List of description in display
+    </h1>
+
+
+</div>
+
+
+
+{#  only show when i submit  #}
+
+{% for i in accessblog %}
+<form action="{{ url_for('delete', id=i['id']) }}" method="post">
+    <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
+        <div style ="border:solid 1px white;color:white;margin-left:150px;margin-right:150px;">
+            {{ i['description'] }}  <input name='submit' class="danger" type="submit" value="Delete" style="float:right;color:white;border:0px;font-weight:bold;background-color:red;" onclick="return confirm('Are you sure?');">
+        </div>
+    </div>
+</form>
+
+
+
+{% endfor %}
+
+</div>
+</fieldset>
+</form>
+
+
+
+<h1 style="font-size:40px; color:white; text-align:center;">FEEDBACKS</h1>
+<div style="border:5px solid white; border-radius:25px; padding:30px;">
+    {% for fb in feedbacks %}
+    <h1 style="color:lawngreen;">{{ fb['name'] }}</h1>
+    <p style="color:white;">{{ fb['comment'] }}</p>
+    <h1 style="color:white;">------------------------------------------------------------------------------------------</h1>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock content %}

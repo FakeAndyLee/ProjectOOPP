@@ -1,23 +1,21 @@
 .containerbus{
-    height: 100px;
     width: 100%;
     border-color: black;
     border-style: groove;
-    position: relative;
     top: 100px;
     border-bottom: none;
     border-radius: 5px;
+    position: relative;
 }
-#contentb{
-    height: 300px;
+.content{
     width: 100%;
     border-color: black;
-    position: relative;
     border-style:groove ;
     border-top: none;
-    border-radius:5px
+    border-radius:5px;
+
 }
-#p1{
+#routeName{
     font-family: Quicksand;
     font-weight: bold;
     font-size: 40px;
@@ -26,16 +24,16 @@
 
 }
 
-#p2{
+#route{
     font-family: Quicksand;
     font-size: 30px;
-    text-align: 25px;
+    text-align:25px;
     position: relative;
     left:50px;
 }
 
 #arrow{
-    font-size: 60px;
+    font-size: 50px;
     float: right;
     text-decoration: none;
     color: black;
@@ -52,9 +50,17 @@
 }
 #map{
     float: right;
-    height: 250px;
-    width:500px;
-    bottom: 200px;
-    position: relative;
+    height: 400px;
+    width:400px;
+    position:relative;
     left:30%;
+}
+#routeHeader{
+    text-decoration: underline;
+    text-align: center;
+    font-family: Quicksand;
+    color: #99cb99;
+}
+.card-header{
+    background-color: #99cb99;
 }

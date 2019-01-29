@@ -1,4 +1,5 @@
-{% extends "layoutWOsidebar.html" %}
+{% extends "layoutWOSBHome.html" %}
+
 {% block head %}
 
 {% endblock %}
@@ -8,51 +9,59 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        .mySlides {display:none;}
-    </style>
+
+
+
 </head>
 <body>
-
+%nsbp
+<!--
 <div class="w3-container">
-    <h2>Slideshow Caption</h2>
-    <p></p>
+    <p>Add a caption text for each image slide with the w3-display-* classes (topleft, topmiddle, topright, bottomleft, bottommiddle, bottomright or middle).</p>
 </div>
+-->
+<div class="w3-content w3-display-container"> <!--w3-content-->
 
-<div class="w3-content w3-display-container">
-
+    %nsbp
+    <div>%nsbp</div>
+    {% for i in accessblog %}
     <div class="w3-display-container mySlides">
-        <img src="{{url_for('static', filename='homeImages/bus.jpg')}}" style="width:100%">
-        <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
-            Learn more
+        <img src="{{url_for('static', filename='homeImages/'+ i["picture"] )}}" style="width:100%">
+
+        <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+            <a href="destination">Start Journey</a>
         </div>
 
-        <div class="w3-display-topleft w3-large w3-container w3-padding-16 w3-black">
-            Transportation
+        <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black" style="opacity: 0.7;">
+            <div style ="border:solid 1px red;">
+                {{ i['description'] }}
+            </div>
         </div>
     </div>
+    {% endfor %}
 
-    <div class="w3-display-container mySlides">
-        <img src="{{url_for('static', filename='homeImages/download1.jpg')}}" style="width:100%">
-    </div>
+    <!--
+        <div class="w3-display-container mySlides">
+          <img src="{{url_for('static', filename='homeImages/download1.jpg')}}" style="width:100%">
+        </div>
 
-    <div class="w3-display-container mySlides">
-        <img src="{{url_for('static', filename='homeImages/download3.jpg')}}" style="width:100%">
-    </div>
+        <div class="w3-display-container mySlides">
+          <img src="{{url_for('static', filename='homeImages/download3.jpg')}}" style="width:100%">
+        </div>
 
-    <div class="w3-display-container mySlides">
-        <img src="{{url_for('static', filename='homeImages/download4.jpg')}}" style="width:100%">
-    </div>
-
+        <div class="w3-display-container mySlides">
+          <img src="{{url_for('static', filename='homeImages/download4.jpg')}}" style="width:100%">
+        </div>
+    -->
 
     <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
     <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-
+    <!--
     <x class="w3-center">
         <button class="w3-button demo" onclick="currentDiv(1)">1</button>
         <button class="w3-button demo" onclick="currentDiv(2)">2</button>
         <button class="w3-button demo" onclick="currentDiv(3)">3</button>
-
+    -->
 
 </div>
 
@@ -83,6 +92,100 @@
         dots[slideIndex-1].className += " w3-red";
     }
 </script>
+
+
+<div style="text-align: center;">
+    <h1 style="margin-top: 0px;color:black;background-color:white;margin-bottom: 0px;" > Welcome to <span style="color:green;display:inline-block;margin-bottom:10px;">WakeMeUp!</span> </h1>
+
+    <h3 style="color:black;background-color:white;margin-top: 0px;">
+        We provide world class services. In need of the world fastest transport?
+    </h3>
+
+    <h1 style="background-color:#282934;color:white;">
+        About Us
+    </h1>
+
+    <h3 style="margin-left:20%; margin-right: 20%;color:white;background-color:#282934;">
+        After many hours of conducting interviews and surveys about the public transportation, we have found that people often miss
+        their bus stops either because it is too crowded or they happen to fall asleep. As such, we have created with this
+        WebPage as a way to tackle the problems faced by them.
+    </h3>
+
+    <h1>
+        <span style="color:white;"> Look no further and Start </span><a href="destination"><span style="color:green;text-decoration: none;"> NOW! </span></a>
+    </h1>
+</div>
+
+
+<script src="https://ajx.googleapis.com/ajx/libsjquery/3.3.1/jquery.min.js"></script>
+<div style="background-color: white;">
+
+    <h1 style="color:black;margin-left:200px;">SMART MOBILITY QUIZ</h1>
+    <p style="color:black;margin-left:200px;">how smart are you ?</p>
+
+    <form id="quiz" name="quiz" style="color:black;margin-left:200px;">
+
+        <p> 1)How many singaporeans travel using public transport?? </p>
+        <input type="radio" id="op" name="q1" value="A"> A) 80%<br>
+        <input type="radio" id="op" name="q1" value="B"> B) 20%<br>
+        <input type="radio" id="op" name="q1" value="C"> C) 60%<br>
+        <br>
+        <p>2)What are the most popular transport in singapore</p>
+        <input type="radio" id="op" name="q2" value="A"> A) Bus<br>
+        <input type="radio" id="op" name="q2" value="B"> B) MRT<br>
+        <input type="radio" id="op" name="q2" value="C"> C) All of the above<br>
+        <br>
+        <p>3)how much can you save taking public transport?</p>
+        <input type="radio" id="op" name="q3" value="A"> A) $9370<br>
+        <input type="radio" id="op" name="q3" value="B"> B) $4690<br>
+        <input type="radio" id="op" name="q3" value="C"> C) $3490<br>
+        <br>
+
+        <input type="button" id="button" value="submit" onclick="check();">
+
+        <p id="displayScore"></p>
+
+    </form>
+
+</div>
+
+<footer>
+
+    <h2 style=" text-align:center;color:white;"> &copy; Copyright 2019 WakeMeUp </h2>
+
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function check() {
+        var Question1 = document.quiz.q1.value;
+        var  Question2 = document.quiz.q2.value;
+        var  Question3 = document.quiz.q3.value;
+
+        var questionCorrect = 0;
+
+        if ( Question1 == "C" ){
+            questionCorrect++;
+        }
+
+        if (Question2 == "C"){
+            questionCorrect++;
+        }
+
+        if (Question3 == "A"){
+            questionCorrect++;
+        }
+
+        document.getElementById("displayScore").innerHTML = "congratulations! you have " + questionCorrect +" questions correct!";
+
+    }
+
+</script>
+
+
+
 </body>
 
 {% endblock content %}

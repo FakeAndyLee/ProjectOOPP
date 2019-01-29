@@ -1,99 +1,164 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST" action="">
-            {{ form.hidden_tag() }}
+<div class="content-section">
+    <form method="POST">
+            {% if error %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>{{ error }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            <div class="modal fade" id="demoModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title"> Bus List Records</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped" id="tblGrid">
+                                <thead id="tblHead">
+                                    <tr>
+                                        <th>Bus Number</th>
+                                        <th>Bus Stop Number</th>
+                                        <th class="text-right">Bus Stop Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for d in listofBuses %}
+                                        {% for key, i in d.items() %}
+                                            {% for bCode, place in i.items() %}
+                                            <tr>
+                                                <td>{{ key }}</td>
+                                                <td>{{ bCode }}</td>
+                                                <td>{{ place }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <fieldset>
                 <div style="font-weight: bold;">
                     <legend class="border-bottom mb-4">Journey Details</legend>
                 </div>
-
                 <div class="form-group">
                     <div style="font-size:20px;">
-                        {{ form.journeyName.label(class="form-control-label") }}
+                        {{ dest.journeyName.label(class="form-control-label") }}
                     </div>
-                        {% if form.journeyName.errors %}
-                            {{ form.journeyName(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.journeyName.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ form.journeyName(class="form-control form-control-lg") }}
-                        {% endif %}
+                    {% if dest.journeyName.errors %}
+                    {{ dest.journeyName(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in dest.journeyName.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ dest.journeyName(class="form-control form-control-lg") }}
+                    {% endif %}
                     <small class="form-text text-muted">Eg. Going Home</small>
                 </div>
 
                 <div class="form-group">
-                    {{ form .busNumber.label(class="form-control-label") }}
-                    <div style="width: 25%;">
-                        {% if form.busNumber.errors %}
-                            {{ form.busNumber(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.busNumber.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                    {{ dest.busNumber.label(class="form-control-label") }}
+                    <div style="width: 32.5%;">
+                        {% if dest.busNumber.errors %}
+                        {{ dest.busNumber(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in dest.busNumber.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.busNumber(class="form-control form-control-lg") }}
+                        {{ dest.busNumber(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                 </div>
+
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        {{ form.journeyFrom.label(class="form-control-label") }}
+                        {{ dest.busstopCode.label(class="form-control-label") }}
 
-                        {% if form.journeyFrom.errors %}
-                            {{ form.journeyFrom(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.journeyFrom.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {% if dest.busstopCode.errors %}
+                        {{ dest.busstopCode(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in dest.busstopCode.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.journeyFrom(class="form-control form-control-lg") }}
+                        {{ dest.busstopCode(class="form-control form-control-lg") }}
                         {% endif %}
+                        <a href="" data-target="#demoModal" data-toggle="modal" class="badge badge-info">Not sure? Click here</a>
+
                     </div>
                     <div class="form-group col-md-4">
-                        {{ form.journeyTo.label(class="form-control-label") }}
-                        {% if form.journeyTo.errors %}
-                            {{ form.journeyTo(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.journeyTo.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ dest.destination.label(class="form-control-label") }}
+                        {% if dest.destination.errors %}
+                        {{ dest.destination(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in dest.destination.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.journeyTo(class="form-control form-control-lg") }}
+                        {{ dest.destination(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                 </div>
+
+
                 <div class="form-group">
-                    {{ form.alertMe.label(class="form-control-label") }}
-                    <div style="width: 25%;">
-                        {% if form.alertMe.errors %}
-                            {{ form.alertMe(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.alertMe.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                    {{ dest.busID.label(class="form-control-label") }}
+                    <div style="width: 32.5%;">
+                        {% if dest.busID.errors %}
+                        {{ dest.busID(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in dest.busID.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.alertMe(class="form-control form-control-lg") }}
+                        {{ dest.busID(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ dest.alertMe.label(class="form-control-label") }}
+                    <div style="width: 32.5%;">
+                        {% if dest.alertMe.errors %}
+                        {{ dest.alertMe(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in dest.alertMe.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ dest.alertMe(class="form-control form-control-lg value_=1") }}
                         {% endif %}
 
                     </div>
                 </div>
-            </fieldset>
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-primary") }}
-                </div>
-        </form>
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
-    </div>
+        </fieldset>
+        <div class="form-group">
+            {{ dest.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+    </small>
+</div>
 {% endblock content %}

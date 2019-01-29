@@ -1,0 +1,6 @@
+'journeyName', (2560, 20)
+'busNumber', (3072, 5)
+'busstopCode', (3584, 8)
+'destination', (4096, 23)
+'alertMe', (4608, 5)
+'busID', (5120, 18)

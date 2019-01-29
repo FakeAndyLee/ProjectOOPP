@@ -1,0 +1,34 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+    <h1>Wake me up!</h1>
+  <ul style="float:right;">
+      {%  if 'LOGIN' in session['id'] %}
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('register') }}">Register</a>
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('busdriver') }}">Admin Login</a></li>
+      {%  endif %}
+      {% if 'REGISTER' in session['id'] %}
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('login') }}">Log In</a>
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('busdriver') }}">Admin Login</a></li>
+      {% endif %}
+      {% if 'BUSDRIVER' in session['id'] %}
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('register') }}">Register</a>
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('login') }}">Log In</a>
+      {% endif %}
+      {% if 'FORGET' in session['id'] %}
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('login') }}">Log In</a>
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('register') }}">Register</a>
+        <li><a style="text-decoration: none; font-family: Verdana; color:blue;" href="{{ url_for('busdriver') }}">Admin Login</a></li>
+      {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

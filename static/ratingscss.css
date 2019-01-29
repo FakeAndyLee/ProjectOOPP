@@ -2,24 +2,32 @@
           color: goldenrod;
           font-size: 2.0rem;
           padding: 0 1rem; /* space out the stars */
-        }
-        .star::before{
-          content: '\2606';    /* star outline */
-          cursor: pointer;
-        }
-        .star.rated::before{
-          /* the style for a selected star */
-          content: '\2605';  /* filled star */
+          text-align: center;
         }
 
         .stars{
             counter-reset: rateme 0;
             font-size: 2.0rem;
             font-weight: 900;
+            text-align: center;
         }
-        .star.rated{
-            counter-increment: rateme 1;
-        }
-        .stars::after{
-            content: counter(rateme) '/5';
-        }
+
+
+#rateHead {
+    text-align: center;
+    color: goldenrod;
+    font-family: Quicksand;
+}
+
+
+
+
+.starBtn{
+    float:right;
+}
+
+.containerStar{
+    background-color:#99cb99;
+    border-radius: 5px;
+    border: 5px solid goldenrod;
+}

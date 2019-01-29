@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form action="{{ url_for('hello') }}" method="post">
+        <div style="font-weight: bold;">
+            <legend class="border-bottom mb-4">Journey Details</legend>
+        </div>
+            <div class="form-group" style="font-size:20px;">
+                <label for="journeyName" class="col-sm-3 form-control-label">Journey Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="journeyName" placeholder="School Route">
+                </div>
+            </div>
+            <div class="form-group" style="font-size:20px;">
+                <label for="busID" class="col-sm-3 form-control-label">Bus ID</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="busID">
+                </div>
+            </div>
+            <div class="form-group" style="font-size:20px;">
+                <label for="busNumber" class="col-sm-3 form-control-label">Bus Number</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="busNumber">
+                </div>
+            </div>
+            <div class="form-row" style="padding-left: 15px;">
+                    <div class="form-group col-md-4">
+                        <label for="busstopCode" class="form-control-label" style="font-size:20px;">Bus Stop Code</label>
+                        <input type="text" class="form-control" name="busstopCode">
+                    </div>
+                    <h4 style="padding-top: 14px; padding-left: 20px;padding-right: 20px; font-size:60px;">→</h4>
+                    <div class="form-group col-md-6" style="padding-top: 37.5px;">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" style="font-weight: bold;">Destination</div>
+                            </div>
+                            <input type="text" class="form-control" name="destination" placeholder="Ang Mo Kio MRT">
+                        </div>
+                    </div>
+            </div>
+            <div class="form-row" style="padding-left: 15px;">
+                <div class="col-auto">
+                    <label class="mr-sm-2" style="font-size:20px;">Alert Me Before:</label>
+                    <select class="custom-select mr-sm-2" name="stops">
+                        <option selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">4</option>
+                        <option value="3">5</option>
+                    </select>
+                </div>
+            </div>
+            <div style="padding-left:15px;padding-top: 22px;padding-bottom: 15px;">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+
+    </form>
+
+
+
+
+</div>
+{% endblock %}
